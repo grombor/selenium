@@ -36,13 +36,33 @@ public class HelloWorld {
 		System.out.println("Page current URL: " + webDriver.getCurrentUrl());
 		
 //		Find login field and put some text here
-		webDriver.findElement(By.id("user[login]")).sendKeys("My_login");
+		webDriver.findElement(By.xpath("//*[@id=\'user[login]\']")).sendKeys("test");
 		
 //		Find email field and put some text here
 		webDriver.findElement(By.id("user[email]")).sendKeys("password@my.com");
 		
-//		Find password field and put some text here
-		webDriver.findElement(By.id("user[password]")).sendKeys("user[password]");
+//		Find password field by name and put some text here
+		webDriver.findElement(By.name("user[password]")).sendKeys("user[password]");
+		
+//		Find submit button and click it
+//		webDriver.findElement(By.xpath("/html/body/div[4]/div[1]/div/div/div[2]/div/form/button"));
+		// this xpath is reliable
+		
+//		Find an element by linkText and click it
+		webDriver.findElement(By.linkText("terms of service")); // can use .click(); or sth
+		
+//		Find an element by css selector
+		webDriver.findElement(By.cssSelector("a.text-white.jumbotron-link")); // .click();
+		
+//		Find a error msg from webpage and print it to the console
+		System.out.println(webDriver.findElement(By.cssSelector("p.form-control-note")).getText());
+		
+//		Find an element by own xpath
+//		$x("//*[@type='submit']")
+		webDriver.findElement(By.xpath("//input[@data-hotkey='s']")).sendKeys("trolo");
+		
+//		Find an element by own css selector $$("input[name='q']")
+		webDriver.findElement(By.cssSelector("input[name='q']")).sendKeys("lolo");;
 		
 //		Print page source to console
 //		System.out.println("Page source:");
