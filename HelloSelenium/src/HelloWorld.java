@@ -58,7 +58,7 @@ public class HelloWorld {
 		System.out.println(webDriver.findElement(By.cssSelector("p.form-control-note")).getText());
 		
 //		Find an element by own xpath
-//		$x("//*[@type='submit']")
+//		$x("//input[@data-hotkey='s']")
 		webDriver.findElement(By.xpath("//input[@data-hotkey='s']")).sendKeys("trolo");
 		
 //		Find an element by own css selector $$("input[name='q']")
