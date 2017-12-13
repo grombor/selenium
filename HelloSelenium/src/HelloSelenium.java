@@ -39,10 +39,10 @@ public class HelloSelenium {
 //		Pick a date from a calendar
 		path = "//button[@data-trigger='departure_date']";
 //		Explicit wait
-		WebDriverWait dWait = new WebDriverWait(driver, 5);
+		WebDriverWait d = new WebDriverWait(driver, 5);
 		driver.findElement(By.xpath(path)).click();
 		path = "//table/tbody/tr[3]/td[5]";
-		d.until(ExpectedConditions.elementToBeClickable(path));
+		d.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(path))));
 		driver.findElement(By.xpath(path)).click();
 		
 //		Pick party size
