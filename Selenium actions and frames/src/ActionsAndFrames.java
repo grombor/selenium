@@ -29,7 +29,8 @@ public class ActionsAndFrames {
 		WebElement target = driver.findElement(By.id(path));
 		
 //		Find searchbox and type some keys
-		actions.moveToElement(target).click().keyDown(Keys.SHIFT).sendKeys("hello").build().perform();
+		actions.moveToElement(target).click().sendKeys("salt water engine car kit").sendKeys(Keys.ENTER).build().perform();
+		
 	}
 
 }
