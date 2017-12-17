@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,11 +12,27 @@ public class UnwrappingCalendar {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", "/home/grombor/selenium-java-3.8.1/chromedriver");
 		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("https://www.loveholidays.com/");
-		driver.findElement(By.xpath("//*[@class='cal-icon']")).click();
 		
+//		Get the calendar xpath
+		driver.findElement(By.xpath("//a[@class='link-input__input link-input__input--is-placeholder']")).click();
+		
+//		Get Select web element and select option for June
 		Select select = new Select (driver.findElement(By.xpath("//div[@class='search-unit-custom-control-calendar__month']/select")));
 		select.selectByVisibleText("June 2018");
+		
+//		Put all calendar cells into a list container
+		List<WebElement> target = driver.findElements(By.cssSelector("a.search-unit-custom-control-calendar-day__link"));
+		
+//		Iterate through all list element until find our day
+		for (int i=0; i<target.size(); i++) {
+			String getCelltext = target.get(i).getText().toString();
+			if (getCelltext.equals("14")) {
+				System.out.println("Found!" + target.get(i).getText());
+				//target.get(i).click();
+			}
+		}
 		
 	}
 
