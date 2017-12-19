@@ -23,14 +23,17 @@ public class UnwrappingCalendar {
 		select.selectByVisibleText("June 2018");
 		
 //		Put all calendar cells into a list container
-		List<WebElement> target = driver.findElements(By.cssSelector("a.search-unit-custom-control-calendar-day__link"));
+		List<WebElement> target = driver.findElements(By.cssSelector("a.search-unit-custom-control-calendar-day__link > div > time"));
+		
+//		TODO - erase popup issue at the bottom
+		
 		
 //		Iterate through all list element until find our day
 		for (int i=0; i<target.size(); i++) {
 			String getCelltext = target.get(i).getText().toString();
 			if (getCelltext.equals("14")) {
 				System.out.println("Found!" + target.get(i).getText());
-				//target.get(i).click();
+				target.get(i).click();
 			}
 		}
 		
