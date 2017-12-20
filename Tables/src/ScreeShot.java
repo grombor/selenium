@@ -18,7 +18,7 @@ public class ScreeShot {
 		File src = ((TakesScreenshot) google).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(src, new File("/home/grombor/selenium-java-3.8.1/SShots/screen.png"));
 		System.out.println("Screenshot made.");
-		
+		google.close();
 	}
 
 }
